@@ -3,6 +3,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
+def auth(request):
+    return render(request, 'auth.html')
+
 def home(request):
     return render(request, 'home.html')
 
@@ -13,7 +16,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('index')
+      return redirect('/')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()

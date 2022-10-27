@@ -16,11 +16,10 @@
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;SomeTrails</a></li>
+                    <li><a href="{% url 'auth' %}" class="left brand-logo">&nbsp;&nbsp;SomeTrails</a></li>
                 </ul>
                 <ul class="right">
                     <!-- changes below -->
-                    {% comment %} <li><a href="{% url 'about' %}">About</a></li> {% endcomment %}
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}

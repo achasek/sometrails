@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='auth'>
+    <h1>Welcome</h1>
+    <a href="{% url 'signup'%}" class='auth-links'>Signup/Login</a>
+    <a href="{% url 'home'%}" class='auth-links'>Continue as Guest</a>
+</div>
+
+{% endblock %}
