@@ -1,25 +1,65 @@
-*{
-
+* {
+    box-sizing: border-box;
 }
-body{
-    min-height:100vh;
+
+body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
+
 main {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
     flex: 1 0 auto;
+    height: 100%;
+    width: 100vw;
 }
+
 footer.page-footer {
     padding-top: 0;
     text-align: right;
-  }
-.auth-links{
-    display: block;
 }
 
-.auth{
+.auth-links {
+    display: block;
+    margin: 1em auto;
+    font-size: 1.3em;
+}
+
+.auth {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 20%;
+}
+
+.home-hikes {
+    border: 2px solid black;
+    height: 80%;
+    width: 100%;
+    align-self: end;
+}
+
+.home-main {
+    display: grid;
+    grid-row: 1fr 1fr 1fr;
+    height: 80%;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+}
+
+
+#home-title {
+    margin: 0;
 }
