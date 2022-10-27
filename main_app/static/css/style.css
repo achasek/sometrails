@@ -1,0 +1,25 @@
+*{
+
+}
+body{
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+  }
+.auth-links{
+    display: block;
+}
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
