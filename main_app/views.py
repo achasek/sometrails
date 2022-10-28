@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Hike
+from .models import Hike, Review
 # Create your views here.
 
 
@@ -44,6 +44,10 @@ class HikeCreate(LoginRequiredMixin, CreateView):
 
 class HikeDetail(DetailView):
     model = Hike
+    def get_context_data(self, **kwargs):
+      context = super().get_context_data(**kwargs)
+      context['reviews'] = Review.objects.get(id=self.object.id)
+      return context
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):
     model = Hike

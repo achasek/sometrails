@@ -11,6 +11,13 @@
         <p>Difficulty: {{ hike.get_difficulty_display}}</p>
         <p>Location: {{ hike.location}}</p>
         <p>Description: {{ hike.description}}</p>
+        {% if reviews %}
+        {% for review in reviews %}
+        <p>Content: {{ review.content}}</p>
+        {% endfor %}
+        {% else %}
+        <p>No Reviews</p>
+        {% endif %}
         
       </div>
       <div class="card-action">
