@@ -37,20 +37,20 @@ footer.page-footer {
     margin-top: 20%;
 }
 
-.home-hikes {
+.index-hikes {
     border: 2px solid black;
     height: 80%;
     width: 100%;
     align-self: end;
 }
 
-.home-main {
+.index-main {
     display: grid;
     grid-row: 1fr 1fr 1fr;
     height: 80%;
 }
 
-.home-page {
+.index-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,6 +60,6 @@ footer.page-footer {
 }
 
 
-#home-title {
+#index-title {
     margin: 0;
 }
