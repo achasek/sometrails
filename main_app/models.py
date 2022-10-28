@@ -25,13 +25,20 @@ class Hike(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+INT_CHOICES = (
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
 
+)
 class Review(models.Model):
     date = models.DateField(default=date.today)
     content = models.TextField(max_length=250)
-    rating = models.PositiveIntegerField(
-        default=5,
-        validators=[MaxValueValidator(5), MinValueValidator(1)]
+    rating = models.IntegerField(
+        default = 5,
+        choices = INT_CHOICES
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
