@@ -19,12 +19,12 @@
             <div class="nav-wrapper black">
                 <ul>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;SomeTrails</a></li>
+                    <li><a href="{% url 'index' %}" class="left brand-logo">&nbsp;&nbsp;SomeTrails</a></li>
                     <li class="right"><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                     <li><a href="{% url 'auth' %}" class="left brand-logo">&nbsp;&nbsp;SomeTrails</a></li>
                     {% endif %}
-                    
+
                 </ul>
             </div>
         </nav>

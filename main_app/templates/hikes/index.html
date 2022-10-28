@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="index-page">
+    <h1 class="center" id="index-title">Welcome {{user}}</h1>
+    <a href="{% url 'hikes_create' %}">create a hike</a>
+    <div class="index-main">
+        <div class="index-hikes" id="easy"></div>
+        <div class="index-hikes" id="moderate"></div>
+        <div class="index-hikes" id="difficult">
+            {% for test in hike %}
+            <p>{{ test.name }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

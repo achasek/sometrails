@@ -9,14 +9,14 @@ DIFFICULTY = (
     ('D', 'Difficult'),
 )
 
+
 class Hike(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
     difficulty = models.CharField(
-    max_length=1,
-    choices=DIFFICULTY,
-    default=DIFFICULTY[0][0]
+        max_length=1,
+        choices=DIFFICULTY,
+        default=DIFFICULTY[0][0]
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
