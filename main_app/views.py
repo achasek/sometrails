@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Hike, Review
+from .forms import ReviewForm
 # Create your views here.
 
 
@@ -47,6 +48,7 @@ class HikeDetail(DetailView):
     def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       context['reviews'] = Review.objects.filter(hike=self.object.id)
+      context['review_form'] = ReviewForm()
       return context
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):
@@ -59,3 +61,22 @@ class HikeUpdate(LoginRequiredMixin, UpdateView):
 class HikeDelete(LoginRequiredMixin, DeleteView):
     model = Hike
     success_url= '/hikes/'
+
+class ReviewDelete(LoginRequiredMixin, DeleteView):
+    model = Review
+    def get_success_url(self):
+        return f'/hikes/{self.object.hike_id}'
+
+def add_review(request, hike_id):
+  # create a FeedingForm instance using
+  # the data that was submitted via the form
+  form = ReviewForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # can't save the form/object to the db
+    # until we've assigned a cat_id
+    new_review = form.save(commit=False)
+    new_review.hike_id = hike_id
+    new_review.user_id = request.user.id
+    new_review.save()
+  return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
