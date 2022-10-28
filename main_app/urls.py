@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
@@ -7,10 +6,8 @@ urlpatterns = [
     path('hikes/', views.hikes_index, name='index'),
     path('accounts/signup/', views.signup, name='signup'),
     path('hikes/create/', views.HikeCreate.as_view(), name='hikes_create'),
-    #     path('accounts/login', auth_views.LoginView.as_view(
-    #         template_name='login.html',
-    #         extra_context={
-    #             'next': '/hikes/index',
-    #         },
-    #     ), name='login'),
+    path('hikes/<int:pk>/', views.HikeDetail.as_view(), name='hikes_detail'),
+    path('hikes/<int:pk>/update/', views.HikeUpdate.as_view(), name='hikes_update'),
+    path('hikes/<int:pk>/delete/', views.HikeDelete.as_view(), name='hikes_delete'),
+
 ]

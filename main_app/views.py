@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -41,10 +42,16 @@ class HikeCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     success_url = '/hikes/'
 
+class HikeDetail(DetailView):
+    model = Hike
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):
-    pass
+    model = Hike
+    fields = ['location', 'description', 'difficulty']
+    def get_success_url(self):
+        return f'/hikes/{self.object.id}'
 
 
 class HikeDelete(LoginRequiredMixin, DeleteView):
-    pass
+    model = Hike
+    success_url= '/hikes/'
