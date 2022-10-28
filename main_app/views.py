@@ -12,9 +12,9 @@ def auth(request):
     return render(request, 'auth.html')
 
 
-def index(request):
-    hike = Hike.objects.all()
-    return render(request, 'index.html', {'hike': hike})
+def hikes_index(request):
+    hikes = Hike.objects.all()
+    return render(request, 'hikes/index.html', {'hikes': hikes})
 
 
 def signup(request):
@@ -24,7 +24,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/index/')
+            return redirect('index')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
@@ -39,7 +39,7 @@ class HikeCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    success_url = '/index/'
+    success_url = '/hikes/'
 
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):
