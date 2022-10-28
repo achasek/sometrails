@@ -9,8 +9,8 @@
         <div class="index-hikes" id="easy"></div>
         <div class="index-hikes" id="moderate"></div>
         <div class="index-hikes" id="difficult">
-            {% for test in hike %}
-            <p>{{ test.name }}</p>
+            {% for hike in hikes %}
+            <a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a>
             {% endfor %}
         </div>
     </div>
