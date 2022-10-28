@@ -13,11 +13,12 @@
         <p>Description: {{ hike.description}}</p>
         {% if reviews %}
         {% for review in reviews %}
+        <p>Review added on: {{ review.date}}</p>
         <p>Content: {{ review.content}}</p>
         {% endfor %}
         {% else %}
         <p>No Reviews</p>
-        {% endif %}
+        {% endif %} 
         
       </div>
       <div class="card-action">

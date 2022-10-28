@@ -46,7 +46,7 @@ class HikeDetail(DetailView):
     model = Hike
     def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      context['reviews'] = Review.objects.get(id=self.object.id)
+      context['reviews'] = Review.objects.filter(hike=self.object.id)
       return context
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):

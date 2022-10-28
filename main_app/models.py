@@ -24,11 +24,10 @@ class Hike(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.get_difficulty_display()}'
+        return f'{self.name}'
 
 class Review(models.Model):
-    # date = models.DateField('review date')
-    # date = models.DateField(default=date.today)
+    date = models.DateField(default=date.today)
     content = models.TextField(max_length=250)
     rating = models.PositiveIntegerField(
         default=5,
@@ -36,7 +35,5 @@ class Review(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
-    # def __str__(self):
-    #     return f'Review added on {self.date}'
-    # class Meta:
-    #     ordering = ['-date']
+    class Meta:
+        ordering = ['-date']
