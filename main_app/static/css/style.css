@@ -3,7 +3,7 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -18,9 +18,11 @@ main {
     width: 100vw;
 }
 
-footer.page-footer {
+.page-footer {
     padding-top: 0;
     text-align: right;
+    bottom: 0;
+    margin-top: auto;
 }
 
 .auth-links {
@@ -30,18 +32,35 @@ footer.page-footer {
 }
 
 .auth {
+    /* height: 80vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 35%;
+    border: 2px solid red;
 }
+
+
 
 .index-hikes {
     border: 2px solid black;
     height: 30%;
     width: 100%;
     align-self: end;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 20px;
+}
+
+.index-hikes>figure {
+    height: 100%;
+    width: 100%;
+}
+
+figure>img {
+    width: 100%;
 }
 
 .index-main {
@@ -76,30 +95,35 @@ footer.page-footer {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
-  
-  .sidebar a {
+}
+
+.sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
-  }
-  
-  .sidebar a:hover {
+}
+
+.sidebar a:hover {
     color: #f1f1f1;
-  }
-  
-  .sidebar .closebtn {
+}
+
+.sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
