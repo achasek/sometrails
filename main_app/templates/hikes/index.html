@@ -6,11 +6,28 @@
     <h1 class="center" id="index-title">Welcome {{user}}</h1>
     <a href="{% url 'hikes_create' %}">create a hike</a>
     <div class="index-main">
-        <div class="index-hikes" id="easy"></div>
-        <div class="index-hikes" id="moderate"></div>
+        <div class="index-hikes" id="easy">
+            {% for hike in hikes %}
+            <figure style="height: 100%;">
+                <img style="max-width:100%;" class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+        <div class="index-hikes" id="moderate">
+            {% for hike in hikes %}
+            <figure>
+                <img class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
+            </figure>
+            {% endfor %}
+        </div>
         <div class="index-hikes" id="difficult">
             {% for hike in hikes %}
-            <a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a>
+            <figure>
+                <img class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
+            </figure>
             {% endfor %}
         </div>
     </div>
