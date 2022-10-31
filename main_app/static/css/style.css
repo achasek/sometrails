@@ -39,14 +39,15 @@ footer.page-footer {
 
 .index-hikes {
     border: 2px solid black;
-    height: 80%;
+    height: 30%;
     width: 100%;
     align-self: end;
 }
 
 .index-main {
-    display: grid;
-    grid-row: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    /* grid-row: 1fr 1fr 1fr; */
     height: 80%;
 }
 
