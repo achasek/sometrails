@@ -44,3 +44,10 @@ class Review(models.Model):
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
     class Meta:
         ordering = ['-date']
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    cat = models.ForeignKey(Hike, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for hike_id: {self.hike_id} @{self.url}"

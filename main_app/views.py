@@ -5,9 +5,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Hike, Review
+from .models import Hike, Review, Photo
 from .forms import ReviewForm
-# Create your views here.
+import uuid
+import boto3
+import os
 
 
 def auth(request):
@@ -68,15 +70,25 @@ class ReviewDelete(LoginRequiredMixin, DeleteView):
         return f'/hikes/{self.object.hike_id}'
 
 def add_review(request, hike_id):
-  # create a FeedingForm instance using
-  # the data that was submitted via the form
   form = ReviewForm(request.POST)
-  # validate the form
   if form.is_valid():
-    # can't save the form/object to the db
-    # until we've assigned a cat_id
     new_review = form.save(commit=False)
     new_review.hike_id = hike_id
     new_review.user_id = request.user.id
     new_review.save()
   return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
+
+def add_photo(request, hike_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, hike_id=hike_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+    return redirect('detail', hike_id=hike_id)

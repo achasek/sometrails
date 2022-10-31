@@ -11,5 +11,5 @@ urlpatterns = [
     path('hikes/<int:pk>/delete/', views.HikeDelete.as_view(), name='hikes_delete'),
     path('reviews/<int:pk>/delete/', views.ReviewDelete.as_view(), name='reviews_delete'),
     path('hikes/<int:hike_id>/add_review/', views.add_review, name='add_review'),
-
+    path('hikes/<int:hike_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
