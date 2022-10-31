@@ -83,12 +83,15 @@ def add_photo(request, hike_id):
     if photo_file:
         s3 = boto3.client('s3')
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        print('s3', s3)
+        print('key', key)
         try:
             bucket = os.environ['S3_BUCKET']
+            print('bucket', bucket)
             s3.upload_fileobj(photo_file, bucket, key)
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
             Photo.objects.create(url=url, hike_id=hike_id)
         except Exception as e:
             print('An error occurred uploading file to S3')
             print(e)
-    return redirect('detail', hike_id=hike_id)
+    return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
