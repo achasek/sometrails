@@ -45,44 +45,53 @@ class HikeCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     success_url = '/hikes/'
 
+
 class HikeDetail(DetailView):
     model = Hike
+
     def get_context_data(self, **kwargs):
-      context = super().get_context_data(**kwargs)
-      context['reviews'] = Review.objects.filter(hike=self.object.id)
-      context['review_form'] = ReviewForm()
-      return context
+        context = super().get_context_data(**kwargs)
+        context['reviews'] = Review.objects.filter(hike=self.object.id)
+        context['review_form'] = ReviewForm()
+        return context
+
 
 class HikeUpdate(LoginRequiredMixin, UpdateView):
     model = Hike
     fields = ['location', 'description', 'difficulty']
+
     def get_success_url(self):
         return f'/hikes/{self.object.id}'
 
 
 class HikeDelete(LoginRequiredMixin, DeleteView):
     model = Hike
-    success_url= '/hikes/'
+    success_url = '/hikes/'
+
 
 class ReviewDelete(LoginRequiredMixin, DeleteView):
     model = Review
+
     def get_success_url(self):
         return f'/hikes/{self.object.hike_id}'
 
+
 def add_review(request, hike_id):
-  form = ReviewForm(request.POST)
-  if form.is_valid():
-    new_review = form.save(commit=False)
-    new_review.hike_id = hike_id
-    new_review.user_id = request.user.id
-    new_review.save()
-  return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.hike_id = hike_id
+        new_review.user_id = request.user.id
+        new_review.save()
+    return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
+
 
 def add_photo(request, hike_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
-        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
         print('s3', s3)
         print('key', key)
         try:

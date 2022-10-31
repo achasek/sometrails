@@ -25,6 +25,8 @@ class Hike(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
 INT_CHOICES = (
     (1, 1),
     (2, 2),
@@ -33,17 +35,21 @@ INT_CHOICES = (
     (5, 5),
 
 )
+
+
 class Review(models.Model):
     date = models.DateField(default=date.today)
     content = models.TextField(max_length=250)
     rating = models.IntegerField(
-        default = 5,
-        choices = INT_CHOICES
+        default=5,
+        choices=INT_CHOICES
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
+
     class Meta:
         ordering = ['-date']
+
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
@@ -51,3 +57,7 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for hike_id: {self.hike_id} @{self.url}"
+
+# class Favorite(models.Model):
+#     user = models.(User, on_delete=models.CASCADE)
+#     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
