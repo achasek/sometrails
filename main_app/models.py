@@ -58,6 +58,8 @@ class Photo(models.Model):
     def __str__(self):
         return f"Photo for hike_id: {self.hike_id} @{self.url}"
 
-# class Favorite(models.Model):
-#     user = models.(User, on_delete=models.CASCADE)
-#     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        User, related_name='user_profile', on_delete=models.CASCADE)
+    hikes = models.ManyToManyField(Hike)
