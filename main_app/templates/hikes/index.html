@@ -11,12 +11,12 @@
             {% for hike in hikes %}
             {% if hike.photo_set.count %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
             {% else %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike"
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike"
                     src="../static/assets/default-hike-photo.jpeg">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
@@ -29,12 +29,12 @@
             {% for hike in hikes %}
             {% if hike.photo_set.count %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
             {% else %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike"
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike"
                     src="../static/assets/default-hike-photo.jpeg">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
@@ -47,12 +47,12 @@
             {% for hike in hikes %}
             {% if hike.photo_set.count %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
             {% else %}
             <figure>
-                <img class="responsive-img card-panel" alt="Picture of Hike"
+                <img class="responsive-img card-panel" id='figureimg' alt="Picture of Hike"
                     src="../static/assets/default-hike-photo.jpeg">
                 <figcaption><strong><a href="{% url 'hikes_detail' hike.id %}">{{hike.name}}</a></strong></figcaption>
             </figure>
