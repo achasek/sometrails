@@ -8,12 +8,12 @@ body {
     flex-direction: column;
     gap: 1rem;
 }
-
 main {
-    /* display: flex;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; */
-    flex: 1 0 auto;
+    align-items: center;
+    flex: 1 1 auto;
     height: 100%;
     width: 100vw;
 }
@@ -37,7 +37,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 35%;
+    /* margin-top: 35%; */
     border: 2px solid red;
 }
 
@@ -52,22 +52,31 @@ main {
     flex-direction: row;
     margin: 20px;
     padding: 20px;
-}
+    overflow-x: scroll;
 
+}
+.custom-img{
+    width:200px;
+}
 .index-hikes>figure {
     height: 100%;
-    width: 100%;
+    flex: 0 0 auto;
 }
-
+.index-hikes::-webkit-scrollbar-horizontal {
+    height: 11px;
+ }
 figure>img {
     width: 100%;
 }
-
+figcaption{
+    width: 200px;
+}
 .index-main {
     display: flex;
     flex-direction: column;
     /* grid-row: 1fr 1fr 1fr; */
     height: 80%;
+    /* white-space: nowrap; */
 }
 
 .index-page {
