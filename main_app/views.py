@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Hike, Review, Photo
+from .models import Hike, Review, Photo, Profile
 from .forms import ReviewForm
 import uuid
 import boto3
@@ -27,6 +27,8 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            Profile.objects.create(user=user)
+            print('user: ', user)
             login(request, user)
             return redirect('index')
         else:
@@ -104,3 +106,20 @@ def add_photo(request, hike_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
+
+
+def add_favorite(request, hike_id):
+    print(Profile.objects.__dict__)
+    profile = Profile.objects.get(id=request.user.user_profile.id)
+    profile.hikes.add(hike_id)
+    return redirect('hikes_detail', pk=hike_id)
+
+
+class ProfileDetail(DetailView):
+    model = Profile
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     profile = Profile.objects.filter(user=self.request.user)
+    #     context['hikes'] = profile.hikes
+    #     return context
