@@ -101,7 +101,7 @@ def add_photo(request, hike_id):
             print('bucket', bucket)
             s3.upload_fileobj(photo_file, bucket, key)
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-            Photo.objects.create(url=url, hike_id=hike_id)
+            Photo.objects.create(url=url, hike_id=hike_id, user=request.user)
         except Exception as e:
             print('An error occurred uploading file to S3')
             print(e)
@@ -123,3 +123,9 @@ class ProfileDetail(DetailView):
     #     profile = Profile.objects.filter(user=self.request.user)
     #     context['hikes'] = profile.hikes
     #     return context
+
+class PhotoDelete(LoginRequiredMixin, DeleteView):
+    model = Photo
+
+    def get_success_url(self):
+        return f'/hikes/{self.object.hike_id}'

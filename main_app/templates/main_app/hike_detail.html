@@ -24,6 +24,7 @@
     </div>
     {% for photo in hike.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
+    <a href="{% url 'photos_delete' photo.id %}">Delete</a>
     {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
