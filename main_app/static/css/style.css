@@ -133,6 +133,14 @@ figcaption{
     margin-left: 50px;
 }
 
+#nav_icon {
+    line-height: 30px;
+    padding: 20px 20px 0 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
 @media screen and (max-height: 450px) {
     .sidebar {
         padding-top: 15px;
