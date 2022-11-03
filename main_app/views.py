@@ -77,7 +77,7 @@ class ReviewDelete(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return f'/hikes/{self.object.hike_id}'
 
-
+@login_required
 def add_review(request, hike_id):
     form = ReviewForm(request.POST)
     if form.is_valid():
@@ -87,7 +87,7 @@ def add_review(request, hike_id):
         new_review.save()
     return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
 
-
+@login_required
 def add_photo(request, hike_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -107,7 +107,7 @@ def add_photo(request, hike_id):
             print(e)
     return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
 
-
+@login_required
 def add_favorite(request, hike_id):
     print(Profile.objects.__dict__)
     profile = Profile.objects.get(id=request.user.user_profile.id)
