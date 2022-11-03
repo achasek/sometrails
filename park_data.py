@@ -51,6 +51,7 @@ for park in list_of_parks: # iterate over all information about the first park i
                 'user': 1,
                 'name': park['fullName'],
                 'difficulty': difficulty,
+                'description': park['description'],
                 'location': test,
                 'altitude': park['altitude'],
                 'directions': park['directionsUrl']
