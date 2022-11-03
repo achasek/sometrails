@@ -24,7 +24,11 @@
       <div class="card-action">
         <a href="{% url 'hikes_update' hike.id %}" class="green-text text-light-darken-3">Edit</a>
         <a href="{% url 'hikes_delete' hike.id %}" class="green-text text-light-darken-3">Delete</a>
+        {% if hike in user.user_profile.hikes.all %}
+        <a href="{% url 'delete_favorite' hike.id %}" class="green-text text-light-darken-3">Unfavorite</a>
+        {% else %}
         <a href="{% url 'add_favorite' hike.id %}" class="green-text text-light-darken-3">Favorite</a>
+        {% endif %}
       </div>
     </div>
     {% for photo in hike.photo_set.all %}

@@ -66,3 +66,7 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, related_name='user_profile', on_delete=models.CASCADE)
     hikes = models.ManyToManyField(Hike)
+
+    def remove_favorite(self, hike_id):
+        self.hikes.remove(hike_id)
+        return
