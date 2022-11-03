@@ -16,6 +16,8 @@ class Hike(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
+    directions = models.CharField(max_length=500)
+    altitude = models.FloatField()
     difficulty = models.CharField(
         max_length=1,
         choices=DIFFICULTY,
