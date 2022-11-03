@@ -6,11 +6,11 @@
 </div>
 
 <!-- class="col s6 col-offset-3" -->
-
+<div class="detail-background">
 <div class="row">
   <div>
     <div class="card">
-      <div class="card-content">
+      <div class="card-content detail-box">
         <span class="card-title">{{ hike.name }}</span>
         <p>Difficulty: {{ hike.get_difficulty_display}}</p>
         <p>Elevation: {{ hike.altitude }}ft</p>
@@ -21,42 +21,51 @@
 
 
       </div>
-      <div class="card-action">
-        <a href="{% url 'hikes_update' hike.id %}" class="green-text text-light-darken-3">Edit</a>
-        <a href="{% url 'hikes_delete' hike.id %}" class="green-text text-light-darken-3">Delete</a>
-        {% if hike in user.user_profile.hikes.all %}
-        <a href="{% url 'delete_favorite' hike.id %}" class="green-text text-light-darken-3">Unfavorite</a>
-        {% else %}
-        <a href="{% url 'add_favorite' hike.id %}" class="green-text text-light-darken-3">Favorite</a>
-        {% endif %}
-      </div>
+      {% if user.is_authenticated %}
+        <div class="card-action">
+          <a href="{% url 'hikes_update' hike.id %}" class="green-text text-light-darken-3">Edit</a>
+          <a href="{% url 'hikes_delete' hike.id %}" class="green-text text-light-darken-3">Delete</a>
+          {% if hike in user.user_profile.hikes.all %}
+          <a href="{% url 'delete_favorite' hike.id %}" class="green-text text-light-darken-3">Unfavorite</a>
+          {% else %}
+          <a href="{% url 'add_favorite' hike.id %}" class="green-text text-light-darken-3">Favorite</a>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
     {% for photo in hike.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
-    <a href="{% url 'photos_delete' photo.id %}">Delete</a>
+    {% if user.is_authenticated %}
+    <button class="photo-delete-btn"><a href="{% url 'photos_delete' photo.id %}">DELETE</a></button>
+    {% endif %}
     {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
+    {% if user.is_authenticated %}
     <form action="{% url 'add_photo' hike.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
       {% csrf_token %}
       <input type="file" name="photo-file">
       <br><br>
       <input type="submit" class="btn" value="Upload Photo">
     </form>
+    {% endif %}
     {% if reviews %}
     {% for review in reviews %}
     <div class='card'>
       <div class="card-content">
         <span class="card-title">
-          {{ review.user }}
+          <h5 class="review-username">{{ review.user }}</h5>
           {% if review.user == user%}
+          {% if user.is_authenticated %}
           <div class="card-action">
             <a href="{% url 'reviews_delete' review.id %}">Delete</a>
           </div>
           {% endif %}
+          {% endif %}
         </span>
         <p>Added on: {{ review.date}}</p>
         <p>Rating: {{ review.rating }}</p>
+        <br>
         <p>{{ review.content}}</p>
       </div>
     </div>
@@ -64,13 +73,17 @@
     {% else %}
     <p>No Reviews Yet</p>
     {% endif %}
-    <form action="{% url 'add_review' hike.id%}" method="POST">
+    {% if user.is_authenticated %}
+    <form class="review-form" action="{% url 'add_review' hike.id%}" method="POST">
       {% csrf_token %}
       {{ review_form.as_p }}
       <button class="btn" type="submit">Add Review</button>
     </form>
+    {% endif %}
   </div>
 </div>
+</div>
+
 
 
 <script>
