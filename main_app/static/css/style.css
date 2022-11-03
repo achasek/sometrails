@@ -24,16 +24,6 @@ main {
     width: 100vw;
 }
 
-.sometrails>h1 {
-    font-size: 1.5em;
-    padding: 0;
-    margin: 15%;
-}
-
-figure>img {
-    width: 100%;
-}
-
 figcaption {
     width: 200px;
     color: rgb(60, 126, 33);
@@ -41,22 +31,15 @@ figcaption {
     text-align: center;
 }
 
+figure>img {
+    width: 100%;
+}
+
 figure>a {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.sometrails {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sometrails>h1 {
-    padding-top: 3px;
-    margin-left: 7px;
 }
 
 .logo {
@@ -70,6 +53,42 @@ figure>a {
     bottom: 0;
     margin-bottom: -24px;
     width: 100vw;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 2px solid red;
+    margin-bottom: 0;
+}
+
+.sometrails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sometrails>h1 {
+    padding-top: 3px;
+    margin-left: 7px;
+    font-size: 1.5em;
+    padding: 0;
+    margin: 15%;
+}
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(60, 126, 33);
+    width: 50vw;
+    padding: 50px;
+    background: linear-gradient(rgb(230, 230, 230), rgb(250, 250, 250));
+    opacity: 0.8;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    border-radius: 10px;
 }
 
 .auth-background {
@@ -94,20 +113,6 @@ figure>a {
 .auth-links:hover {
     color: orange;
     transition: all 0.2s ease-in-out;
-}
-
-.auth {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgb(60, 126, 33);
-    width: 50vw;
-    padding: 50px;
-    background: linear-gradient(rgb(230, 230, 230), rgb(250, 250, 250));
-    opacity: 0.8;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-    border-radius: 10px;
 }
 
 .auth-title {
@@ -140,33 +145,19 @@ figure>a {
     border-radius: 10px;
 }
 
-.custom-img {
-    width: 200px;
-}
-
-.photo-delete-btn {
-    padding: 1%;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
-.photo-delete-btn>a {
-    text-decoration: none;
-    color: rgb(244, 175, 86);
+.index-hikes::-webkit-scrollbar-horizontal {
+    height: 11px;
 }
 
 .index-hikes>figure {
     height: 100%;
     flex: 0 0 auto;
-
 }
 
-.responsive-img {
-    border-radius: 10px;
-}
-
-.index-hikes::-webkit-scrollbar-horizontal {
-    height: 11px;
+.index-username {
+    font-weight: 900;
+    font-style: italic;
+    color: rgb(60, 126, 33);
 }
 
 .index-main {
@@ -179,6 +170,23 @@ figure>a {
 .index-main>h3 {
     box-shadow: 0px 4px 2px -2px rgb(60, 126, 33);
     width: 30%;
+}
+
+.photo-delete-btn {
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background: white;
+    margin: 0 45% 20px 45%;
+}
+
+.photo-delete-btn>a {
+    text-decoration: none;
+    color: rgb(244, 175, 86);
+}
+
+.responsive-img {
+    border-radius: 10px;
 }
 
 .sidebar {
@@ -194,7 +202,7 @@ figure>a {
     padding-top: 60px;
 }
 
-.sidebar a {
+.sidebar>a {
     padding: 8px 8px 80px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -203,11 +211,11 @@ figure>a {
     transition: 0.3s;
 }
 
-.sidebar a:nth-child(2) {
+.sidebar>a:nth-child(2) {
     padding-top: 70px;
 }
 
-.sidebar a:hover {
+.sidebar>a:hover {
     color: #818181;
 }
 
@@ -217,12 +225,6 @@ figure>a {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}
-
-.index-username {
-    font-weight: 900;
-    font-style: italic;
-    color: rgb(60, 126, 33);
 }
 
 .welcomebox {
@@ -237,14 +239,6 @@ figure>a {
     text-shadow: 1px 1px #f1f1f1;
 }
 
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    border: 2px solid red;
-    margin-bottom: 0;
-}
-
 .detailbox {
     padding: 30px;
     background-image: url("../assets/header-image.jpg");
@@ -257,12 +251,99 @@ figure>a {
     text-shadow: 1px 1px #f1f1f1;
 }
 
-.row {
-    width: 70%;
+.card {
+    margin-bottom: 40px;
+    margin-top: 35px;
 }
 
 .card-action {
     color: rgb(60, 126, 33);
+}
+
+.card-panel {
+    margin-bottom: 0;
+}
+
+.no-review {
+    margin: 20px auto;
+}
+
+.review-delete {
+    margin-top: 20px;
+}
+
+.review-delete>a {
+    margin-left: 80%;
+}
+
+.review-username {
+    color: rgb(60, 126, 33);
+    margin-top: 0;
+}
+
+.review-form {
+    background: white;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.reg-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.reg-box {
+    background-color: white;
+    padding: 80px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    opacity: 0.9;
+}
+
+.reg-box>h1 {
+    margin-top: 0;
+}
+
+.row {
+    width: 40%;
+}
+
+.detail-background {
+    width: 100vw;
+    background: linear-gradient(rgb(103, 137, 154), #DECBA4);
+    border-top: 7px solid transparent;
+}
+
+.custom-img {
+    width: 200px;
+}
+
+.hike-form-bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hike-form-box {
+    background-color: white;
+    padding: 80px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    opacity: 0.9;
 }
 
 #index-title {
@@ -278,32 +359,6 @@ figure>a {
     color: rgb(60, 126, 33);
 }
 
-.review-username {
-    color: rgb(60, 126, 33);
-    margin-top: 0;
-}
-
-.detail-box {
-    margin-top: 25px;
-}
-
-.row {
-    width: 40%;
-}
-
-.review-form {
-    background: white;
-    padding: 5%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}
-
-.detail-background {
-    width: 100vw;
-    background: linear-gradient(rgb(103, 137, 154),#DECBA4);
-    border-top: 7px solid transparent;
-}
-
 #figureimg {
     width: 700px;
     height: 350px;
@@ -313,9 +368,6 @@ figure>a {
 #create-hike {
     text-decoration: none;
 }
-
-
-
 
 @media screen and (max-height: 450px) {
     .sidebar {

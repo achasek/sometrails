@@ -7,86 +7,85 @@
 </div>
 <div class="welcomebox">
     {% if user.is_authenticated %}
-        <h1 class="center" id="index-title">Welcome<br><span class="index-username" >{{user}}</span></h1>
+    <h1 class="center" id="index-title">Welcome<br><span class="index-username">{{user}}</span></h1>
     {% else %}
-        <h1 class="center" id="index-title">Welcome</h1>
+    <h1 class="center" id="index-title">Welcome</h1>
     {% endif %}
 </div>
-<!-- <div class=" index-page"> -->
-            <div class=" index-main">
-                <h3>Easy Hikes</h3>
-                <div class="index-hikes" id="easy">
-                    {% if hikes %}
-                    {% for hike in hikes %}
-                    {% if hike.difficulty == 'E' %}
-                    {% if hike.photo_set.count %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% else %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                </div>
-                <h3>Moderate Hikes</h3>
-                <div class="index-hikes" id="moderate">
-                    {% if hikes %}
-                    {% for hike in hikes %}
-                    {% if hike.difficulty == 'M' %}
-                    {% if hike.photo_set.count %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% else %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                </div>
-                <h3>Difficult Hikes</h3>
-                <div class="index-hikes" id="difficult">
-                    {% if hikes %}
-                    {% for hike in hikes %}
-                    {% if hike.difficulty == 'D' %}
-                    {% if hike.photo_set.count %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% else %}
-                    <figure>
-                        <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
-                                alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
-                            <figcaption><strong>{{hike.name}}</strong></figcaption>
-                        </a>
-                    </figure>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-            <!-- </div> -->
 
-            {% endblock %}
+<div class=" index-main">
+    <h3>Easy Hikes</h3>
+    <div class="index-hikes" id="easy">
+        {% if hikes %}
+        {% for hike in hikes %}
+        {% if hike.difficulty == 'E' %}
+        {% if hike.photo_set.count %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% else %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <h3>Moderate Hikes</h3>
+    <div class="index-hikes" id="moderate">
+        {% if hikes %}
+        {% for hike in hikes %}
+        {% if hike.difficulty == 'M' %}
+        {% if hike.photo_set.count %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% else %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <h3>Difficult Hikes</h3>
+    <div class="index-hikes" id="difficult">
+        {% if hikes %}
+        {% for hike in hikes %}
+        {% if hike.difficulty == 'D' %}
+        {% if hike.photo_set.count %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% else %}
+        <figure>
+            <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+                    alt="Picture of Hike" src="../static/assets/default-hike-photo.jpeg">
+                <figcaption><strong>{{hike.name}}</strong></figcaption>
+            </a>
+        </figure>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
