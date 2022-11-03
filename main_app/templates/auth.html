@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class='auth'>
-    <h1>Welcome To SomeTrails</h1>
-    <a href="{% url 'signup'%}" class='auth-links'>Signup</a>
-    <a href="{% url 'login'%}" class='auth-links'>Login</a>
-    <a href="{% url 'index'%}" class='auth-links'>Continue as Guest</a>
+<div class="auth-background">
+    <div class='auth'>
+        <div class="auth-title">
+            <img src="../static/assets/logo.png" alt="logo" class="auth-logo">
+            <h1>SomeTrails</h1>
+        </div>
+        <a href="{% url 'signup'%}" class='auth-links'>Signup</a>
+        <a href="{% url 'login'%}" class='auth-links'>Login</a>
+        <a href="{% url 'index'%}" class='auth-links'>Continue as Guest</a>
+    </div>
 </div>
 
 {% endblock %}
