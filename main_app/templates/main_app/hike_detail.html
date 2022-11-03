@@ -13,15 +13,22 @@
       <div class="card-content">
         <span class="card-title">{{ hike.name }}</span>
         <p>Difficulty: {{ hike.get_difficulty_display}}</p>
-        <p>Location: {{ hike.location}}</p>
-        <p>Description: {{ hike.description}}</p>
+        <p>Elevation: {{ hike.altitude }}ft</p>
+        <p>Location: {{ hike.location}} - <a href="{{ hike.directions }}"
+            class="green-text text-light-darken-3">Directions</a></p>
+        <br>
+        <p>Description: <br> {{ hike.description}}</p>
 
 
       </div>
       <div class="card-action">
-        <a href="{% url 'hikes_update' hike.id %}">Edit</a>
-        <a href="{% url 'hikes_delete' hike.id %}">Delete</a>
-        <a href="{% url 'add_favorite' hike.id %}">Favorite</a>
+        <a href="{% url 'hikes_update' hike.id %}" class="green-text text-light-darken-3">Edit</a>
+        <a href="{% url 'hikes_delete' hike.id %}" class="green-text text-light-darken-3">Delete</a>
+        {% if hike in user.user_profile.hikes.all %}
+        <a href="{% url 'delete_favorite' hike.id %}" class="green-text text-light-darken-3">Unfavorite</a>
+        {% else %}
+        <a href="{% url 'add_favorite' hike.id %}" class="green-text text-light-darken-3">Favorite</a>
+        {% endif %}
       </div>
     </div>
     {% for photo in hike.photo_set.all %}
