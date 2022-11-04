@@ -121,12 +121,6 @@ def add_favorite(request, hike_id):
 class ProfileDetail(DetailView):
     model = Profile
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     profile = Profile.objects.filter(user=self.request.user)
-    #     context['hikes'] = profile.hikes
-    #     return context
-
 
 class PhotoDelete(LoginRequiredMixin, DeleteView):
     model = Photo

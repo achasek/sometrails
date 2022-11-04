@@ -1,28 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if object %}
-<h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
-{% else %}
-<h1>Add Hike</h1>
-{% endif %}
-<form action="" method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn">
-</form>
+<div class="hike-form-bg">
+  <div class="hike-form-box">
+    {% if object %}
+    <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+    {% else %}
+    <h1>Add Hike</h1>
+    {% endif %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="Submit!" class="btn">
+    </form>
+  </div>
+</div>
 
 <script>
-  // const dateEl = document.getElementById('id_date');
-  // M.Datepicker.init(dateEl, {
-  //   format: 'yyyy-mm-dd',
-  //   defaultDate: new Date(),
-  //   setDefaultDate: true,
-  //   autoClose: true
-  // });
-
   const selectEl = document.getElementById('id_difficulty');
   M.FormSelect.init(selectEl);
 </script>
