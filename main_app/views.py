@@ -110,6 +110,13 @@ def add_photo(request, hike_id):
     return redirect(f'/hikes/{hike_id}', hike_id=hike_id)
 
 
+class PhotoDelete(LoginRequiredMixin, DeleteView):
+    model = Photo
+
+    def get_success_url(self):
+        return f'/hikes/{self.object.hike_id}'
+
+
 @login_required
 def add_favorite(request, hike_id):
     print(Profile.objects.__dict__)
@@ -118,17 +125,11 @@ def add_favorite(request, hike_id):
     return redirect('hikes_detail', pk=hike_id)
 
 
-class ProfileDetail(DetailView):
+class ProfileDetail(LoginRequiredMixin, DetailView):
     model = Profile
 
 
-class PhotoDelete(LoginRequiredMixin, DeleteView):
-    model = Photo
-
-    def get_success_url(self):
-        return f'/hikes/{self.object.hike_id}'
-
-
+@login_required
 def delete_favorite(request, hike_id):
     profile = Profile.objects.get(id=request.user.user_profile.id)
     profile.hikes.remove(hike_id)
