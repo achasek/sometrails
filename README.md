@@ -52,6 +52,7 @@ The source code can be found <a href="https://github.com/achasek/sometrails">her
 ## Technologies Used:
 - HTML
 - CSS
+- Materialize
 - Python
 - JavaScript
 - Django
