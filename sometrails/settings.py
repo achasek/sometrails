@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sometrails.wsgi.application'
+WSGI_APPLICATION = 'sometrails-sei96.wsgi.application'
 
 
 # Database

@@ -1,1 +1,1 @@
-web: gunicorn sometrails.wsgi
+web: gunicorn sometrails-sei96.wgsi
