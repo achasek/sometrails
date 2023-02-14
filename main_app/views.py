@@ -40,7 +40,7 @@ def signup(request):
 
 class HikeCreate(LoginRequiredMixin, CreateView):
     model = Hike
-    fields = ['name', 'location', 'description', 'difficulty']
+    fields = ['name', 'location', 'description', 'difficulty', 'altitude']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
