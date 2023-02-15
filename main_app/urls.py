@@ -21,4 +21,5 @@ urlpatterns = [
     path('hikes/<int:hike_id>/add_photo/', views.add_photo, name='add_photo'),
     path('photos/<int:pk>/delete/',
          views.PhotoDelete.as_view(), name='photos_delete'),
+    path('hikes/hikes_search/', views.hikes_search, name='hikes_search'),
 ]

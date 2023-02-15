@@ -80,7 +80,7 @@ class ReviewDelete(LoginRequiredMixin, DeleteView):
 
 @login_required
 def add_review(request, hike_id):
-    form = ReviewForm(request.POST)
+    form = ReviewForm()
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.hike_id = hike_id
@@ -134,3 +134,12 @@ def delete_favorite(request, hike_id):
     profile = Profile.objects.get(id=request.user.user_profile.id)
     profile.hikes.remove(hike_id)
     return redirect('hikes_detail', pk=hike_id)
+
+
+def hikes_search(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        hikes = Hike.objects.filter(name__contains=searched)
+        return render(request, 'main_app/hike_search.html', {'searched': searched, 'hikes': hikes})
+    else:
+        return render(request, 'main_app/hike_search.html', {})
