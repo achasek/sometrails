@@ -25,6 +25,7 @@
         <a href="{% url 'index' %}" class="brand-logo">SomeTrails</a>
         <a href="{% url 'profile_detail' request.user.user_profile.id %}">Favorites</a>
         <a id="create-hike" href="{% url 'hikes_create' %}">Create A Hike</a>
+        <a href="{% url 'hikes_search' %} ">Search</a>
         <a href="{% url 'logout' %}">Log Out</a>
         {% else %}
         <a href="{% url 'auth' %}">SomeTrails</a>
