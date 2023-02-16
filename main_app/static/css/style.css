@@ -48,20 +48,43 @@ figure>a {
 }
 
 .page-footer {
-    padding: 0;
+    padding: auto;
     text-align: right;
     bottom: 0;
-    margin-bottom: -24px;
+    margin-bottom: -50px;
     width: 100vw;
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
 }
 
+.logo-footer {
+    height: 100px;
+    padding: 10px 40px 10px 40px;
+    margin: 20px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    border-left: 3px solid black;
+}
+
+.footer-links>a {
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+    text-align: left;
+}
+
+/* 
 .footer-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border: 2px solid red;
     margin-bottom: 0;
-}
+} */
 
 .sometrails {
     display: flex;
@@ -83,7 +106,7 @@ figure>a {
     justify-content: center;
     align-items: center;
     border: 2px solid rgb(60, 126, 33);
-    width: 50vw;
+    width: 60vw;
     padding: 50px;
     background: linear-gradient(rgb(230, 230, 230), rgb(250, 250, 250));
     opacity: 0.8;
@@ -92,20 +115,41 @@ figure>a {
 }
 
 .auth-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url('../assets/background.jpg');
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg,
+            rgba(217, 237, 146, 1) 0%,
+            rgba(153, 217, 140, 1) 25%,
+            rgba(82, 182, 154, 1) 50%,
+            rgba(22, 138, 173, 1) 75%,
+            rgba(30, 96, 145, 1) 100%);
+    animation: AnimateBG 20s ease infinite;
 }
+
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
 
 .auth-links {
     display: block;
     margin: 1em auto;
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: rgb(10, 10, 10);
     box-shadow: 0px 4px 2px -2px rgb(60, 126, 33);
 }
@@ -128,6 +172,22 @@ figure>a {
 .auth-logo {
     height: 3.2em;
     margin-top: 10px;
+}
+
+.auth-about {
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px 30px 10px;
+    margin-bottom: 20px;
+    border-top: 1px dashed rgb(60, 126, 33);
+    border-bottom: 1px dashed rgb(60, 126, 33);
+    color: rgb(54, 114, 38);
+}
+
+.auth-about>h5 {
+    font-size: 1.6em;
+    text-align: left;
+    text-indent: 2em;
 }
 
 .index-hikes {
@@ -318,6 +378,7 @@ figure>a {
 
 .detail-background {
     width: 100vw;
+    height: 100vh;
     background: linear-gradient(rgb(103, 137, 154), #DECBA4);
     border-top: 7px solid transparent;
 }
