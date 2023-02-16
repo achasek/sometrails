@@ -139,7 +139,7 @@ def delete_favorite(request, hike_id):
 def hikes_search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
-        hikes = Hike.objects.filter(name__contains=searched)
+        hikes = Hike.objects.filter(name__icontains=searched)
         return render(request, 'main_app/hike_search.html', {'searched': searched, 'hikes': hikes})
     else:
         return render(request, 'main_app/hike_search.html', {})

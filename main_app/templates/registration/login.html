@@ -9,6 +9,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="btn" value="Log In">
+            <a href="{% url 'logout' %}" class="btn">Go Back</a>
             <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
