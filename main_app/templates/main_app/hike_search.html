@@ -10,12 +10,21 @@
 {% if searched %}
 {% for hike in hikes %}
 {% if forloop.first %}
+{% if hike.photo_set.count %}
 <figure>
     <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
             alt="Picture of Hike" src="{{hike.photo_set.first.url}}">
         <figcaption><strong>{{hike.name}}</strong></figcaption>
     </a>
 </figure>
+{% else %}
+<figure>
+    <a href="{% url 'hikes_detail' hike.id %}"><img class="responsive-img card-panel" id='figureimg'
+            alt="Picture of Hike" src="../../static/assets/default-hike-photo.jpeg">
+        <figcaption><strong>{{hike.name}}</strong></figcaption>
+    </a>
+</figure>
+{% endif %}
 {% endif %}
 {% empty %}
 <h2>Nothing Found</h2>
